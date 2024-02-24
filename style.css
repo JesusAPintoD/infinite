@@ -1,3 +1,7 @@
+body {
+  background-color: aquamarine;
+}
+
 .avatar {
   width: 5em;
   /* height: 1em; */
@@ -8,4 +12,19 @@ canvas {
 * {
   margin: 0;
   padding: 0;
+}
+
+.background-displacement {
+  background-image: url('./assets/background.png'); /* Ruta a tu imagen de fondo */
+  background-repeat: repeat-y; /* Repite la imagen verticalmente */
+  animation: desplazamiento 10s linear infinite; /* Animación de desplazamiento infinito */
+}
+
+@keyframes desplazamiento {
+  0% {
+    background-position: 0 0; /* Comienza desde arriba */
+  }
+  100% {
+    background-position: 0 100%; /* Termina en la parte inferior */
+  }
 }

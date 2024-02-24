@@ -3,12 +3,11 @@ document.addEventListener('DOMContentLoaded', function() {
   const ctx = canvas.getContext('2d');
     canvas.width = 400;
     canvas.height = 640;
-
   const canvasWidth = canvas.width; // Ancho del canvas (ajusta según tus necesidades)
   
   // Crea una nueva imagen
   const img = new Image();
-  let imgNewWidth = 50;
+  let imgNewWidth = 80;
   let posX = (canvasWidth - imgNewWidth) / 2 ; // Coordenada X inicial
   let posY = 5; // Coordenada Y inicial
   let nextPosition = 0;
@@ -17,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
   img.onload = function() {
     proportion = img.width / img.height;
     imgNewHeight = imgNewWidth / proportion;
+    ctx.fillStyle = 'transparent'; 
     ctx.drawImage(img, posX, posY, imgNewWidth, imgNewHeight);
   };
 
@@ -47,4 +47,25 @@ document.addEventListener('DOMContentLoaded', function() {
     ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpia el canvas
     ctx.drawImage(img, posX, posY, imgNewWidth, imgNewHeight);
   });
+
+
+
+// acciones de ganar o perder, activacion del score detener fondo
+
+// Obtén el elemento que tiene la animación 
+const boxElement = document.querySelector(".background-displacement");
+
+// Escucha el evento de tecla Espacio
+document.addEventListener("keydown", function(event) {
+  document.addEventListener("keydown", function(event) {
+    if (event.key === " ") { // simula perder
+      boxElement.style.animationPlayState = "paused";
+    } else if (event.key === "Enter") { //simula ganar
+      boxElement.style.animationPlayState = "running";
+    }
+  });
+});
+
+
+
 });
